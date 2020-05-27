@@ -1,4 +1,4 @@
-package net.simplifiedcoding.firebaserealtimedatabasetutorial;
+package com.gamoffice.simplerealtimedb;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -13,28 +13,28 @@ import java.util.List;
  * Created by Belal on 2/26/2017.
  */
 
-public class TrackList extends ArrayAdapter<Track> {
+public class ArmiList extends ArrayAdapter<Arma> {
     private Activity context;
-    List<Track> tracks;
+    List<Arma> armi;
 
-    public TrackList(Activity context, List<Track> tracks) {
-        super(context, R.layout.layout_artist_list, tracks);
+    public ArmiList(Activity context, List<Arma> armi) {
+        super(context, R.layout.layout_personaggio_list, armi);
         this.context = context;
-        this.tracks = tracks;
+        this.armi = armi;
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.layout_artist_list, null, true);
+        View listViewItem = inflater.inflate(R.layout.layout_personaggio_list, null, true);
 
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView textViewRating = (TextView) listViewItem.findViewById(R.id.textViewGenre);
 
-        Track track = tracks.get(position);
-        textViewName.setText(track.getTrackName());
-        textViewRating.setText(String.valueOf(track.getRating()));
+        Arma arma = armi.get(position);
+        textViewName.setText(arma.getArmaName());
+        textViewRating.setText(String.valueOf(arma.getDanno()));
 
         return listViewItem;
     }

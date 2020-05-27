@@ -1,4 +1,4 @@
-package net.simplifiedcoding.firebaserealtimedatabasetutorial;
+package com.gamoffice.simplerealtimedb;
 
 import org.junit.Test;
 

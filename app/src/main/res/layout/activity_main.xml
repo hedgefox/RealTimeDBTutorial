@@ -11,29 +11,29 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter name" />
+        android:hint="Nome personaggio" />
 
     <Spinner
-        android:id="@+id/spinnerGenres"
+        android:id="@+id/spinnerClasse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextName"
-        android:entries="@array/genres"></Spinner>
+        android:entries="@array/classe"></Spinner>
 
     <Button
-        android:id="@+id/buttonAddArtist"
+        android:id="@+id/buttonAddPersonaggio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spinnerGenres"
+        android:layout_below="@id/spinnerClasse"
         android:text="Add" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddArtist"
+        android:layout_below="@id/buttonAddPersonaggio"
         android:padding="16dp"
-        android:text="Artists"
+        android:text="Personaggi"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -42,11 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:text="Tap on an Artist to add and view tracks"
+        android:text="Seleziona un personaggio per vedere le sue armi"
         android:textAlignment="center" />
 
     <ListView
-        android:id="@+id/listViewArtists"
+        android:id="@+id/listViewPersonaggi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"></ListView>

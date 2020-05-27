@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_artist"
+    android:id="@+id/activity_personaggio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArtistActivity">
+    tools:context=".PersonaggiActivity">
 
     <TextView
-        android:id="@+id/textViewArtist"
+        android:id="@+id/textViewPersonaggio"
         android:padding="16dp"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -16,11 +16,11 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:layout_below="@id/textViewArtist"
+        android:layout_below="@id/textViewPersonaggio"
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter track name" />
+        android:hint="Nome dell'arma" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -46,7 +46,7 @@
 
 
     <Button
-        android:id="@+id/buttonAddTrack"
+        android:id="@+id/buttonAddArma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
@@ -56,14 +56,14 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddTrack"
+        android:layout_below="@id/buttonAddArma"
         android:padding="16dp"
-        android:text="Tracks"
+        android:text="Armi"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <ListView
-        android:id="@+id/listViewTracks"
+        android:id="@+id/listViewArmi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"></ListView>

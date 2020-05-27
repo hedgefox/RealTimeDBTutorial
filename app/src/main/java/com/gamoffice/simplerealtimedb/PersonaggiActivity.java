@@ -1,4 +1,4 @@
-package net.simplifiedcoding.firebaserealtimedatabasetutorial;
+package com.gamoffice.simplerealtimedb;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -21,43 +21,43 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtistActivity extends AppCompatActivity {
+public class PersonaggiActivity extends AppCompatActivity {
 
-    Button buttonAddTrack;
-    EditText editTextTrackName;
+    Button buttonAddArma;
+    EditText editTextArmaName;
     SeekBar seekBarRating;
-    TextView textViewRating, textViewArtist;
-    ListView listViewTracks;
+    TextView textViewRating, textViewPersonaggio;
+    ListView listViewArmi;
 
-    DatabaseReference databaseTracks;
+    DatabaseReference databaseArmi;
 
-    List<Track> tracks;
+    List<Arma> armi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_artist);
+        setContentView(R.layout.activity_personaggio);
 
         Intent intent = getIntent();
 
         /*
          * this line is important
          * this time we are not getting the reference of a direct node
-         * but inside the node track we are creating a new child with the artist id
-         * and inside that node we will store all the tracks with unique ids
+         * but inside the node armi we are creating a new child with the personaggio id
+         * and inside that node we will store all the armi with unique ids
          * */
-        databaseTracks = FirebaseDatabase.getInstance().getReference("tracks").child(intent.getStringExtra(MainActivity.ARTIST_ID));
+        databaseArmi = FirebaseDatabase.getInstance().getReference("armi").child(intent.getStringExtra(MainActivity.PERSONAGGIO_ID));
 
-        buttonAddTrack = (Button) findViewById(R.id.buttonAddTrack);
-        editTextTrackName = (EditText) findViewById(R.id.editTextName);
+        buttonAddArma = (Button) findViewById(R.id.buttonAddArma);
+        editTextArmaName = (EditText) findViewById(R.id.editTextName);
         seekBarRating = (SeekBar) findViewById(R.id.seekBarRating);
         textViewRating = (TextView) findViewById(R.id.textViewRating);
-        textViewArtist = (TextView) findViewById(R.id.textViewArtist);
-        listViewTracks = (ListView) findViewById(R.id.listViewTracks);
+        textViewPersonaggio = (TextView) findViewById(R.id.textViewPersonaggio);
+        listViewArmi = (ListView) findViewById(R.id.listViewArmi);
 
-        tracks = new ArrayList<>();
+        armi = new ArrayList<>();
 
-        textViewArtist.setText(intent.getStringExtra(MainActivity.ARTIST_NAME));
+        textViewPersonaggio.setText(intent.getStringExtra(MainActivity.PERSONAGGIO_NAME));
 
         seekBarRating.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -76,7 +76,7 @@ public class ArtistActivity extends AppCompatActivity {
             }
         });
 
-        buttonAddTrack.setOnClickListener(new View.OnClickListener() {
+        buttonAddArma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveTrack();
@@ -88,16 +88,16 @@ public class ArtistActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        databaseTracks.addValueEventListener(new ValueEventListener() {
+        databaseArmi.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                tracks.clear();
+                armi.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Track track = postSnapshot.getValue(Track.class);
-                    tracks.add(track);
+                    Arma arma = postSnapshot.getValue(Arma.class);
+                    armi.add(arma);
                 }
-                TrackList trackListAdapter = new TrackList(ArtistActivity.this, tracks);
-                listViewTracks.setAdapter(trackListAdapter);
+                ArmiList trackListAdapter = new ArmiList(PersonaggiActivity.this, armi);
+                listViewArmi.setAdapter(trackListAdapter);
             }
 
             @Override
@@ -108,16 +108,16 @@ public class ArtistActivity extends AppCompatActivity {
     }
 
     private void saveTrack() {
-        String trackName = editTextTrackName.getText().toString().trim();
+        String armaNAme = editTextArmaName.getText().toString().trim();
         int rating = seekBarRating.getProgress();
-        if (!TextUtils.isEmpty(trackName)) {
-            String id  = databaseTracks.push().getKey();
-            Track track = new Track(id, trackName, rating);
-            databaseTracks.child(id).setValue(track);
-            Toast.makeText(this, "Track saved", Toast.LENGTH_LONG).show();
-            editTextTrackName.setText("");
+        if (!TextUtils.isEmpty(armaNAme)) {
+            String id  = databaseArmi.push().getKey();
+            Arma arma = new Arma(id, armaNAme, rating);
+            databaseArmi.child(id).setValue(arma);
+            Toast.makeText(this, "Arma salvata", Toast.LENGTH_LONG).show();
+            editTextArmaName.setText("");
         } else {
-            Toast.makeText(this, "Please enter track name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Inserisci un'arma", Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Firebase Realtime Database Tutorial</string>
 
-    <array name="genres">
-        <item>Rock</item>
-        <item>Pop</item>
-        <item>Sufi</item>
-        <item>Disco</item>
+    <array name="classe">
+        <item>Barbaro</item>
+        <item>Bardo</item>
+        <item>Chierico</item>
+        <item>Druido</item>
+        <item>Guerriero</item>
+        <item>Ladro</item>
+        <item>Mago</item>
+        <item>Monaco</item>
+        <item>Paladino</item>
+        <item>Ranger</item>
+        <item>Stregone</item>
+        <item>Warlock</item>
     </array>
 </resources>

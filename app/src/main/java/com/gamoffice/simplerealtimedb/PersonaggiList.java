@@ -1,7 +1,6 @@
-package net.simplifiedcoding.firebaserealtimedatabasetutorial;
+package com.gamoffice.simplerealtimedb;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,28 +13,28 @@ import java.util.List;
  * Created by Belal on 2/26/2017.
  */
 
-public class ArtistList extends ArrayAdapter<Artist> {
+public class PersonaggiList extends ArrayAdapter<Personaggio> {
     private Activity context;
-    List<Artist> artists;
+    List<Personaggio> personaggi;
 
-    public ArtistList(Activity context, List<Artist> artists) {
-        super(context, R.layout.layout_artist_list, artists);
+    public PersonaggiList(Activity context, List<Personaggio> personaggi) {
+        super(context, R.layout.layout_personaggio_list, personaggi);
         this.context = context;
-        this.artists = artists;
+        this.personaggi = personaggi;
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.layout_artist_list, null, true);
+        View listViewItem = inflater.inflate(R.layout.layout_personaggio_list, null, true);
 
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView textViewGenre = (TextView) listViewItem.findViewById(R.id.textViewGenre);
 
-        Artist artist = artists.get(position);
-        textViewName.setText(artist.getArtistName());
-        textViewGenre.setText(artist.getArtistGenre());
+        Personaggio personaggio = personaggi.get(position);
+        textViewName.setText(personaggio.getPersonaggioNome());
+        textViewGenre.setText(personaggio.getPersonaggioClasse());
 
         return listViewItem;
     }
